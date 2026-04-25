@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinity Women's Fitness Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --white: #F5F0E8;
+    --gray: #888;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    color: var(--white); text-decoration: none;
+    font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0.8; transition: all 0.3s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold); color: var(--black);
+    padding: 10px 28px; border: none; cursor: pointer;
+    font-family: 'Jost', sans-serif; font-size: 0.75rem;
+    font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+    transition: background 0.3s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    background: radial-gradient(ellipse at 70% 50%, #1a1200 0%, var(--black) 60%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(circle at 80% 20%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 40%);
+  }
+
+  .hero-lines {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+  }
+  .hero-lines::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: 5%;
+    width: 1px; height: 140%;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.3), transparent);
+    transform: rotate(8deg);
+  }
+  .hero-lines::after {
+    content: '';
+    position: absolute;
+    top: -20%; right: 12%;
+    width: 1px; height: 140%;
+    background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.12), transparent);
+    transform: rotate(8deg);
+  }
+
+  .hero-content {
+    text-align: center; position: relative; z-index: 2;
+    padding: 0 20px; max-width: 900px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
+    line-height: 0.92;
+    margin-bottom: 32px;
+    animation: fadeUp 1s 0.15s ease both;
+  }
+
+  .hero-title em {
+    font-style: italic; color: var(--gold);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem; letter-spacing: 0.12em;
+    opacity: 0.6; max-width: 420px; margin: 0 auto 48px;
+    line-height: 1.8;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 1s 0.45s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: var(--black);
+    padding: 16px 44px; font-family: 'Jost', sans-serif;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; border: none; cursor: pointer;
+    text-decoration: none; transition: all 0.3s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 16px 44px; font-family: 'Jost', sans-serif;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; border: 1px solid rgba(255,255,255,0.25);
+    cursor: pointer; text-decoration: none; transition: all 0.3s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-badge {
+    position: absolute; bottom: 50px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    opacity: 0.4; animation: fadeUp 1s 0.6s ease both;
+  }
+  .hero-badge span { display: block; width: 40px; height: 1px; background: currentColor; }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex; justify-content: center;
+  }
+
+  .stats-inner {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    max-width: 700px; width: 100%; text-align: center;
+  }
+
+  .stat-item {
+    padding: 40px 20px;
+    border-right: 1px solid rgba(201,168,76,0.1);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; color: var(--gold); line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.5;
+  }
+
+  /* SECTION COMMON */
+  section { padding: 100px 60px; }
+
+  .section-tag {
+    font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px; display: block;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1; margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-body {
+    opacity: 0.6; line-height: 1.9; font-size: 0.95rem;
+    max-width: 480px;
+  }
+
+  /* ABOUT */
+  .about {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .about-visual {
+    position: relative; aspect-ratio: 3/4;
+    background: var(--dark2);
+    border: 1px solid rgba(201,168,76,0.15);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .about-visual::before {
+    content: '∞';
+    font-size: 18rem; color: rgba(201,168,76,0.04);
+    position: absolute; line-height: 1;
+  }
+
+  .about-visual-inner {
+    position: relative; z-index: 2; text-align: center; padding: 40px;
+  }
+
+  .about-logo-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; color: var(--gold); letter-spacing: 0.15em;
+    font-weight: 900;
+  }
+
+  .about-logo-sub {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    opacity: 0.5; margin-top: 8px;
+  }
+
+  .about-corner {
+    position: absolute; width: 50px; height: 50px;
+    border-color: rgba(201,168,76,0.3);
+    border-style: solid;
+  }
+  .about-corner.tl { top: 20px; left: 20px; border-width: 1px 0 0 1px; }
+  .about-corner.br { bottom: 20px; right: 20px; border-width: 0 1px 1px 0; }
+
+  .about-pills {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px;
+  }
+
+  .pill {
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 8px 18px; font-size: 0.72rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  /* SERVICES */
+  #services { background: var(--dark); }
+
+  .services-header {
+    text-align: center; margin-bottom: 70px;
+  }
+  .services-header .section-body { margin: 0 auto; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .service-card {
+    background: var(--dark);
+    padding: 50px 40px;
+    position: relative; overflow: hidden;
+    transition: background 0.4s;
+  }
+  .service-card:hover { background: #161400; }
+
+  .service-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+  .service-card:hover::before { width: 100%; }
+
+  .service-icon {
+    font-size: 2rem; margin-bottom: 24px; display: block;
+  }
+
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; margin-bottom: 14px; color: var(--white);
+  }
+
+  .service-desc {
+    font-size: 0.85rem; opacity: 0.5; line-height: 1.8;
+  }
+
+  /* WHY US */
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+
+  .why-list { margin-top: 40px; }
+
+  .why-item {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .why-item:last-child { border-bottom: none; }
+
+  .why-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: rgba(201,168,76,0.25);
+    min-width: 40px; line-height: 1;
+  }
+
+  .why-text h4 {
+    font-size: 0.95rem; font-weight: 600;
+    letter-spacing: 0.05em; margin-bottom: 6px;
+  }
+  .why-text p { font-size: 0.85rem; opacity: 0.5; line-height: 1.7; }
+
+  .why-visual {
+    background: var(--dark2);
+    aspect-ratio: 1;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; border: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .why-visual-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem; color: rgba(201,168,76,0.06);
+    position: absolute; line-height: 1;
+    user-select: none;
+  }
+
+  .why-visual-badge {
+    position: relative; text-align: center; z-index: 2;
+  }
+
+  .why-visual-badge .big-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; color: var(--gold);
+    line-height: 1; display: block;
+  }
+
+  .why-visual-badge small {
+    font-size: 0.7rem; letter-spacing: 0.25em;
+    text-transform: uppercase; opacity: 0.5;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--dark2); }
+
+  .contact-wrap {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+
+  .contact-info { margin-top: 40px; }
+
+  .contact-row {
+    display: flex; gap: 20px; align-items: flex-start;
+    margin-bottom: 32px;
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+    color: var(--gold);
+  }
+
+  .contact-row h4 {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    opacity: 0.4; margin-bottom: 4px;
+  }
+
+  .contact-row p { font-size: 0.9rem; opacity: 0.85; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+  .form-group label {
+    font-size: 0.68rem; letter-spacing: 0.2em;
+    text-transform: uppercase; opacity: 0.4;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    color: var(--white);
+    padding: 14px 18px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    opacity: 0.25;
+  }
+
+  .form-submit {
+    background: var(--gold); color: var(--black);
+    padding: 16px; border: none; cursor: pointer;
+    font-family: 'Jost', sans-serif; font-size: 0.78rem;
+    font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    transition: all 0.3s; margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 50px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 24px;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; color: var(--gold);
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  .footer-copy {
+    font-size: 0.72rem; opacity: 0.3; letter-spacing: 0.1em;
+  }
+
+  .footer-ig a {
+    color: var(--gold); font-size: 0.75rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  .footer-ig a:hover { opacity: 1; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    .about { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; align-items: center; text-align: center; padding: 40px 24px; }
+    .stats-inner { grid-template-columns: 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.1); }
+    .stat-item:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Infinity</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:9061440613" class="nav-cta">Call Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Ladies Only · Millumpadi, Edakkara</p>
+    <h1 class="hero-title">
+      Strength.<br>
+      <em>Redefined.</em>
+    </h1>
+    <p class="hero-sub">A premium women-only fitness studio where you train, transform, and thrive — on your own terms.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Join the Studio</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <span></span>
+    Scroll to explore
+    <span></span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Women Only Space</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">9+</div>
+      <div class="stat-label">Programs Offered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Your Potential</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about">
+    <div class="about-visual">
+      <div class="about-corner tl"></div>
+      <div class="about-corner br"></div>
+      <div class="about-visual-inner">
+        <div class="about-logo-big">∞</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold);letter-spacing:0.1em;">INFINITY</div>
+        <div class="about-logo-sub">Womens Fitness Studio</div>
+        <div style="margin-top:30px;width:60px;height:1px;background:rgba(201,168,76,0.3);margin-left:auto;margin-right:auto;"></div>
+        <div style="margin-top:20px;font-size:0.8rem;opacity:0.4;letter-spacing:0.15em;">EST. 2024</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="section-tag">Our Story</span>
+      <h2 class="section-title">Built for <em>Women</em>, by Women</h2>
+      <p class="section-body">Infinity Women's Fitness Studio is a safe, empowering, and judgment-free space designed exclusively for women. Located in Millumpadi, Edakkara, we offer world-class training programs tailored to your goals — whether it's weight loss, strength, or overall wellness.</p>
+      <div class="about-pills">
+        <span class="pill">Ladies Only</span>
+        <span class="pill">Personal Training</span>
+        <span class="pill">Weight Loss</span>
+        <span class="pill">Strength Training</span>
+        <span class="pill">Cardio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <span class="section-tag">What We Offer</span>
+    <h2 class="section-title">Shape Your <em>Perfect Body</em></h2>
+    <p class="section-body">Nine expertly designed programs to help you reach every fitness goal you've ever set.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🏃‍♀️</span>
+      <h3 class="service-name">Cardio Exercises</h3>
+      <p class="service-desc">High-energy cardio sessions designed to boost your endurance, burn calories, and strengthen your heart.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏋️‍♀️</span>
+      <h3 class="service-name">Strength Training</h3>
+      <p class="service-desc">Build lean muscle, increase metabolism, and feel powerful with our guided strength programs.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">👩‍🏫</span>
+      <h3 class="service-name">Personal Training</h3>
+      <p class="service-desc">One-on-one sessions with certified trainers who create a plan uniquely crafted for your body and goals.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔱</span>
+      <h3 class="service-name">Weight Lift Training</h3>
+      <p class="service-desc">Proper form, progressive overload, real results. Transform your body with structured weightlifting.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💃</span>
+      <h3 class="service-name">Zumba</h3>
+      <p class="service-desc">Dance your way to fitness! Fun, energetic Zumba classes that feel like a party, not a workout.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🤸‍♀️</span>
+      <h3 class="service-name">Aerobics</h3>
+      <p class="service-desc">Classic group aerobics to improve cardiovascular health, coordination, and overall fitness.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💪</span>
+      <h3 class="service-name">Core Strength</h3>
+      <p class="service-desc">Targeted core workouts to build a strong, stable foundation and sculpt your midsection.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🥗</span>
+      <h3 class="service-name">Nutrition Guidance</h3>
+      <p class="service-desc">Expert nutritional advice to complement your workouts and accelerate your transformation.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">♨️</span>
+      <h3 class="service-name">Steam Bath</h3>
+      <p class="service-desc">Relax, recover, and rejuvenate with our premium steam bath facility after your workout.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div>
+      <span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title">Your Safe Space to <em>Grow</em></h2>
+      <p class="section-body">We've built more than a gym. We've built a community where every woman belongs.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-num">01</div>
+          <div class="why-text">
+            <h4>100% Women-Only Environment</h4>
+            <p>Train with full comfort and confidence in a space exclusively designed for women.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">02</div>
+          <div class="why-text">
+            <h4>Certified Expert Trainers</h4>
+            <p>Our trainers are qualified, compassionate, and dedicated to your personal progress.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">03</div>
+          <div class="why-text">
+            <h4>All Fitness Levels Welcome</h4>
+            <p>Beginner to advanced — every body and every goal is welcomed and celebrated here.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-num">04</div>
+          <div class="why-text">
+            <h4>Holistic Wellness Approach</h4>
+            <p>From workouts to nutrition guidance and steam baths — total wellbeing, under one roof.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div class="why-visual-text">∞</div>
+      <div class="why-visual-badge">
+        <span class="big-text">∞</span>
+        <small>Possibilities Await</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div>
+      <span class="section-tag">Find Us</span>
+      <h2 class="section-title">Let's Start Your <em>Journey</em></h2>
+      <p class="section-body">Ready to transform? Reach out to us or walk through our doors — we'd love to meet you.</p>
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Location</h4>
+            <p>Millumpadi, Edakkara, Kerala, India</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:9061440613" style="color:var(--gold);text-decoration:none;">9061440613</a></p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📸</div>
+          <div>
+            <h4>Instagram</h4>
+            <p><a href="https://instagram.com/infinity_womensfitness" target="_blank" style="color:var(--gold);text-decoration:none;">@infinity_womensfitness</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="Your mobile number">
+        </div>
+        <div class="form-group">
+          <label>What are you interested in?</label>
+          <textarea rows="4" placeholder="E.g. Weight loss, personal training, Zumba..."></textarea>
+        </div>
+        <button class="form-submit" onclick="alert('Thank you! We will contact you shortly. 💛')">Send Enquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Infinity</div>
+  <div class="footer-copy">© 2024 Infinity Womens Fitness Studio · All rights reserved</div>
+  <div class="footer-ig">
+    <a href="https://instagram.com/infinity_womensfitness" target="_blank">↗ Instagram</a>
+  </div>
+</footer>
+
+</body>
+</html>
