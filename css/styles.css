@@ -180,16 +180,19 @@ html.has-cursor .cursor-dot,html.has-cursor .cursor-ring{display:block;}
 html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor input,html.has-cursor textarea,html.has-cursor .pill{cursor:none;}
 html.cursor-hover .cursor-ring{width:62px;height:62px;border-color:rgba(232,201,106,0.9);}
 
-/* --- Interactive morphing particle strip --- */
-.morph-divider{position:relative;background:rgba(10,10,10,0.55);border-top:1px solid rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.08);overflow:hidden;padding:10px 0 30px;}
-.morph-divider canvas{display:block;width:100%;height:250px;touch-action:pan-y;}
-.morph-hint{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,168,76,0.5);white-space:nowrap;transition:opacity 0.8s;pointer-events:none;}
-@media(max-width:768px){.morph-divider canvas{height:170px;}}
+/* --- The golden thread (interactive plucked string) ---
+   The layout strip is slim; the canvas is taller and overlaps the
+   neighbouring sections (transparent, pointer-events none) so deep
+   pulls and flying sparks are never clipped. */
+.string-divider{position:relative;height:110px;background:rgba(10,10,10,0.4);z-index:5;}
+.string-divider canvas{position:absolute;left:0;top:50%;transform:translateY(-50%);width:100%;height:340px;pointer-events:none;}
+.string-hint{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,168,76,0.45);white-space:nowrap;transition:opacity 0.8s;pointer-events:none;}
+@media(max-width:768px){.string-divider{height:86px;}.string-divider canvas{height:260px;}}
 
 /* --- Reduced motion --- */
 @media(prefers-reduced-motion:reduce){
   html.js .preloader{display:none;}
-  .morph-hint{display:none;}
+  .string-hint{display:none;}
   .hero-scroll span{animation:none;}
   #webgl{display:none;}
 }
