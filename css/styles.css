@@ -180,19 +180,19 @@ html.has-cursor .cursor-dot,html.has-cursor .cursor-ring{display:block;}
 html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor input,html.has-cursor textarea,html.has-cursor .pill{cursor:none;}
 html.cursor-hover .cursor-ring{width:62px;height:62px;border-color:rgba(232,201,106,0.9);}
 
-/* --- Luxury marquee --- */
-.marquee{overflow:hidden;padding:34px 0;border-top:1px solid rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.08);background:rgba(10,10,10,0.55);}
-.marquee-track{display:flex;align-items:center;width:max-content;animation:marquee 30s linear infinite;will-change:transform;}
-.marquee-track span{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3.6vw,3rem);letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;margin-right:44px;color:transparent;-webkit-text-stroke:1px rgba(201,168,76,0.4);}
-.marquee-track span.mq-fill{color:var(--gold);-webkit-text-stroke:0;font-style:italic;}
-.marquee-track span.mq-dot{color:rgba(201,168,76,0.45);-webkit-text-stroke:0;font-size:1.1rem;}
-@keyframes marquee{to{transform:translateX(-50%);}}
-.marquee:hover .marquee-track{animation-play-state:paused;}
+/* --- Heartbeat pulse divider (ECG line threading an infinity symbol) --- */
+.pulse-divider{background:rgba(10,10,10,0.55);border-top:1px solid rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.08);overflow:hidden;}
+.pulse-divider svg{display:block;width:100%;height:130px;}
+.pulse-base{fill:none;stroke:rgba(201,168,76,0.16);stroke-width:1.5;}
+.pulse-comet{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-dasharray:70 930;filter:drop-shadow(0 0 6px rgba(232,201,106,0.9));animation:pulseRun 7s linear infinite;}
+.pulse-comet2{stroke:rgba(232,201,106,0.45);stroke-width:1.5;stroke-dasharray:38 962;filter:none;animation-delay:-3.5s;}
+@keyframes pulseRun{from{stroke-dashoffset:1000;}to{stroke-dashoffset:0;}}
+@media(max-width:768px){.pulse-divider svg{height:95px;}}
 
 /* --- Reduced motion --- */
 @media(prefers-reduced-motion:reduce){
   html.js .preloader{display:none;}
-  .marquee-track{animation:none;}
+  .pulse-comet{animation:none;visibility:hidden;}
   .hero-scroll span{animation:none;}
   #webgl{display:none;}
 }
