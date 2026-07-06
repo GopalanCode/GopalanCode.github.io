@@ -180,19 +180,17 @@ html.has-cursor .cursor-dot,html.has-cursor .cursor-ring{display:block;}
 html.has-cursor,html.has-cursor a,html.has-cursor button,html.has-cursor input,html.has-cursor textarea,html.has-cursor .pill{cursor:none;}
 html.cursor-hover .cursor-ring{width:62px;height:62px;border-color:rgba(232,201,106,0.9);}
 
-/* --- The golden dumbbell (interactive 3D showcase) --- */
-.dumbbell-divider{position:relative;height:230px;background:radial-gradient(ellipse at 50% 55%,rgba(201,168,76,0.07),rgba(10,10,10,0.4) 70%);border-top:1px solid rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.08);overflow:hidden;}
-.dumbbell-divider canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab;}
-.dumbbell-divider canvas:active{cursor:grabbing;}
-.spin-hint{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,168,76,0.45);white-space:nowrap;transition:opacity 0.8s;pointer-events:none;}
-.dumbbell-divider.no3d{height:0;border-bottom:none;}
-.dumbbell-divider.no3d canvas,.dumbbell-divider.no3d .spin-hint{display:none;}
-@media(max-width:768px){.dumbbell-divider{height:170px;}}
+/* --- Simple infinity divider --- */
+.divider{display:flex;align-items:center;justify-content:center;gap:20px;padding:38px 20px;}
+.divider-line{height:1px;width:min(180px,28vw);background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4));}
+.divider-line:last-child{background:linear-gradient(90deg,rgba(201,168,76,0.4),transparent);}
+.divider-inf{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gold);line-height:1;animation:infGlow 4s ease-in-out infinite;}
+@keyframes infGlow{0%,100%{text-shadow:0 0 6px rgba(201,168,76,0.25);opacity:0.8;}50%{text-shadow:0 0 18px rgba(232,201,106,0.7);opacity:1;}}
 
 /* --- Reduced motion --- */
 @media(prefers-reduced-motion:reduce){
   html.js .preloader{display:none;}
-  .spin-hint{display:none;}
+  .divider-inf{animation:none;}
   .hero-scroll span{animation:none;}
   #webgl{display:none;}
 }
