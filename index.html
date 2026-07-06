@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Infinity Women's Fitness Studio</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Infinity Women's Fitness Studio - a premium ladies-only gym in Millumpadi, Edakkara. Cardio, strength, Zumba, personal training and more.">
 <meta name="theme-color" content="#0A0A0A">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -34,8 +36,21 @@
     <li><a href="#why">Why Us</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav-cta" onclick="handleCall()" id="callBtn">Call Now</button>
+  <div class="nav-right">
+    <button class="nav-cta" onclick="handleCall()" id="callBtn">Call Now</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span></button>
+  </div>
 </nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#why">Why Us</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:9846247613" class="menu-call">Call 98462 47613</a>
+</div>
 
 <section class="hero" id="home">
   <div class="hero-line"></div>
