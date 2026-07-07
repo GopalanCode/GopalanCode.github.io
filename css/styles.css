@@ -150,6 +150,9 @@ footer{background:rgba(10,10,10,0.7);border-top:1px solid rgba(201,168,76,0.1);p
 /* --- 3D background canvas --- */
 #webgl{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;}
 
+/* --- Keyboard focus visibility --- */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,.pill:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
 /* --- Selection & scrollbar --- */
 ::selection{background:rgba(201,168,76,0.9);color:#0A0A0A;}
 ::-webkit-scrollbar{width:9px;}

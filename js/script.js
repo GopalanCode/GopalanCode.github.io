@@ -43,6 +43,12 @@ function showToast(msg) {
   setTimeout(function() { t.classList.remove('show'); }, 3500);
 }
 
+/* Keep the copyright year current */
+(function () {
+  var y = document.getElementById('copyYear');
+  if (y) y.textContent = new Date().getFullYear();
+})();
+
 /* Mobile menu */
 (function () {
   var toggle = document.getElementById('navToggle');
